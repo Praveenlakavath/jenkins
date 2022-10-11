@@ -1,6 +1,10 @@
-echo "my name is groot"
-echo "im the the car "
-echo "welcome to the world of jenkins"
-echo "im in"
-echo "im praveen"
-echo "rocky is in"
+pipeline {
+       agent any
+       stages {
+       stage('stage1') {
+          steps {
+           echo 'hellow wprld'
+           }
+         }
+       }
+    }  
