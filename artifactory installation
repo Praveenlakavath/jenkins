@@ -5,3 +5,5 @@
    systemctl start artifactory.service
    systemctl status artifactory.service
 step2 : take the ip:80081
+step 3 :username = admin [default]
+       password: password [default]
