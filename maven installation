@@ -1,0 +1,34 @@
+go to maven webpage 
+ https://maven.apache.org/
+go to ---> download  ---> apache-maven-3.8.6-bin.zip        cd /opt  ----> wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.zip)
+----unzip  apache-maven-3.8.6-bin.zip 
+----- cd apache-maven-3.8.6/bin 
+type command     mvn --version 
+
+cd ..
+
+soft link the ( apache maven )
+  --->      ln -s apache-maven-3.8.6  maven
+  go to root (optional)
+  ---->    vi /etc/profile.d/maven2.sh
+    .......paste ...
+    export M2_HOME=/opt/maven
+export PATH=${M2_HOME}/bin:${PATH}
+ 
+ 
+ wq!
+   
+to execute or run maven commands 
+----->  source /etc/profile.d/maven.sh             (here the maven.sh is the softlink of apache maven)
+
+go to root or where ever 
+ mvn --version    [it works]
+
+
+
+
+
+
+
+java path set
+
