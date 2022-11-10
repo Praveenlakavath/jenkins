@@ -1,4 +1,12 @@
 take two ec2 instances 
+in  master install ansible 
+update the instance
+--> sudo apt update
+add ansible repository in master
+--->sudo apt-add-repository ppa:ansible/ansible
+install ansible 
+--->sudo apt install ansible
+
 remove all keys from .ssh in master
 --> rm /root/.ssh/authorized_keys
 
