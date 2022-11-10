@@ -1,8 +1,22 @@
 take two ec2 instances 
 remove all keys from .ssh in master
-generate ssh key in master and 
-remove authoriser key from master
+--> rm /root/.ssh/authorized_keys
+
+generate ssh key in master 
+---> ssh-keygen -ti rsa
+
+remove authoriser key from master after key gen 
+---->  rm /root/.ssh/authorized_keys
  remove the key from the authorised keys which are already there 
- copy the  public key from master  and paste in nodes ( in authorised keys )
- now go to the master --in master --/etc/ansible/ vi hosts add the private ip of the nodes and name of nodes
  
+ ----> vi /root/.ssh/authorized_keys
+ 
+ copy the  public key from master  and paste in nodes ( in authorised keys )
+  ---> id_rsa.pub
+  
+ now go to the master --in master --/etc/ansible/ vi hosts add the private ip of the nodes and name of nodes
+ ----> vi/etc/ansible/hosts     (give the ip of the node instance )
+ 
+to ping all nodes 
+
+-----> ansible all -m ping
