@@ -11,7 +11,7 @@ remove all keys from .ssh in master
 --> rm /root/.ssh/authorized_keys
 
 generate ssh key in master 
----> ssh-keygen -ti rsa
+---> ssh-keygen -t rsa
 
 remove authoriser key from master after key gen 
 ---->  rm /root/.ssh/authorized_keys
