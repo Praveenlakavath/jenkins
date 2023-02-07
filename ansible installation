@@ -7,24 +7,36 @@ add ansible repository in master
 install ansible 
 --->sudo apt install ansible
 
+to set hostname 
+-----> hostnamectl set-hostname master
+
+
 remove all keys from .ssh in master
 --> rm /root/.ssh/authorized_keys
-
+ 
+ 
+ 
 generate ssh key in master 
 ---> ssh-keygen -t rsa
 
+
+
 remove authoriser key from master after key gen 
 ---->  rm /root/.ssh/authorized_keys
+
+
  remove the key from the authorised keys which are already there 
+  in node1 
+  ----> vi /root/.ssh/authorized_keys
  
- ----> vi /root/.ssh/authorized_keys
  
  copy the  public key from master  and paste in nodes ( in authorised keys )
   ---> id_rsa.pub
   
  now go to the master --in master --/etc/ansible/ vi hosts add the private ip of the nodes and name of nodes
- ----> vi/etc/ansible/hosts     (give the ip of the node instance )
+ ----> vi /etc/ansible/hosts     (give the ip of the node instance )
  
 to ping all nodes 
 
 -----> ansible all -m ping
+----> ansible agent1 -m ping
