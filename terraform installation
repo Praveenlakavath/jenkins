@@ -18,6 +18,10 @@ check version of terraform
  or
  ----> terraform  --version
  
- 
+add IAM role for the existing instance 
+ i.e  amazon full acceess
+  
+  
+  go to the twerraform instance  select the instance go to  --> actions -->addiam role to this instancwe 
 
  
