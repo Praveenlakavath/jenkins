@@ -1,0 +1,27 @@
+Here's how you can install kubectl on an Amazon Elastic Compute Cloud (EC2) instance:
+------
+Update the package index:
+
+sudo apt-get update
+---------
+Install the packages required to use the Kubernetes package repository:
+
+sudo apt-get install -y apt-transport-https
+------
+Add the Kubernetes package repository to your system's list of repositories:
+
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+echo "deb https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee -a /etc/apt/sources.list.d/kubernetes.list
+-------
+Update the package index and install kubectl:
+
+sudo apt-get update
+sudo apt-get install -y kubectl
+
+----
+Verify the installation by checking the version of kubectl:
+
+kubectl version --client
+
+---
+You should now have kubectl installed and ready to use on your EC2 instance.
