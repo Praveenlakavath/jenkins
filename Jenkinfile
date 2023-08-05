@@ -1,0 +1,64 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout code from GitHub repository
+                git 'https://github.com/yourusername/your-repo.git'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Build project with Maven
+                sh 'mvn clean package'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                // Run SonarQube analysis
+                withSonarQubeEnv('SonarQubeServer') {
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+
+        stage('Artifactory') {
+            steps {
+                // Publish artifacts to Artifactory
+                // Replace the placeholders with your Artifactory details
+                withMaven(maven: 'MavenTool') {
+                    sh 'mvn deploy -Dmaven.deploy.skip=true -Dmaven.test.skip=true -Dmaven.javadoc.skip=true'
+                }
+            }
+        }
+
+        stage('Docker') {
+            steps {
+                // Build and push Docker image
+                withDockerRegistry(credentialsId: 'docker-creds', url: 'https://your-docker-registry') {
+                    sh 'docker build -t your-docker-image .'
+                    sh 'docker push your-docker-image'
+                }
+            }
+        }
+
+        stage('Kubernetes') {
+            steps {
+                // Deploy to Kubernetes using kubectl
+                // Replace the placeholders with your Kubernetes details
+                sh 'kubectl apply -f your-kubernetes-deployment.yaml'
+            }
+        }
+
+        stage('Nagios') {
+            steps {
+                // Push monitoring configuration to Nagios
+                // Replace the placeholders with your Nagios details
+                sh 'nagios-push your-nagios-config.cfg'
+            }
+        }
+    }
+}
